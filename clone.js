@@ -41,3 +41,40 @@ const cloneDeep3 = (origin) => {
     return origin
   }
 }
+
+//4.解决循环引用问题
+// 额外开辟内存空间存储当前对象和拷贝对象的关系，需要拷贝当前对象时先查看是否拷贝过这个对象；
+// 如果有，直接返回，如果没有，则继续拷贝
+const cloneDeep4 = (origin, map = new Map()) => {
+  if (typeof origin === 'object') {
+    if (map.get(origin)) {
+      return map.get(origin)
+    }
+    let copyObj = Array.isArray(origin) ? [] : {}
+    map.set(origin, copyObj)
+    for (const key in origin) {
+      if (Object.hasOwnProperty.call(origin, key)) {
+        copyObj[key] = cloneDeep4(origin[key], map);
+      }
+    }
+    return copyObj
+  } else {
+    return origin
+  }
+}
+
+
+const target = {
+  field1: 1,
+  field2: undefined,
+  field3: {
+    child: 'child'
+  },
+  field4: [2, 4, 8]
+};
+target.target = target;
+console.log(cloneDeep4(target))
+
+
+
+// export { cloneDeep1, cloneDeep2, cloneDeep3, cloneDeep4 }
