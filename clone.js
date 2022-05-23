@@ -26,3 +26,18 @@ const cloneDeep2 = (origin) => {
   }
   return origin
 }
+
+//3.递归实现（考虑数组）
+const cloneDeep3 = (origin) => {
+  if (typeof origin === 'object') {
+    let copyObj = Array.isArray(origin) ? [] : {}
+    for (const key in origin) {
+      if (Object.hasOwnProperty.call(origin, key)) {
+        copyObj[key] = cloneDeep3(origin[key])
+      }
+    }
+    return copyObj
+  } else {
+    return origin
+  }
+}
