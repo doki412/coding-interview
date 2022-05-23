@@ -64,6 +64,7 @@ const cloneDeep4 = (origin, map = new Map()) => {
 }
 
 
+//test
 const target = {
   field1: 1,
   field2: undefined,
@@ -75,6 +76,3 @@ const target = {
 target.target = target;
 console.log(cloneDeep4(target))
 
-
-
-// export { cloneDeep1, cloneDeep2, cloneDeep3, cloneDeep4 }
