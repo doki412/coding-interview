@@ -1,5 +1,5 @@
 //插入排序 O(n*n) 在近乎有序的数组中排序很高效
-const InsertionSort1 = (arr, n) => {
+const InsertionSort1 = (arr) => {
   for (let i = 1; i < arr.length; i++) {
 
     //寻找元素arr[i]合适的插入位置
@@ -12,7 +12,7 @@ const InsertionSort1 = (arr, n) => {
 }
 
 //优化版
-const InsertionSort2 = (arr, n) => {
+const InsertionSort2 = (arr) => {
   for (let i = 1; i < arr.length; i++) {
     let e = arr[i]
     let j;
