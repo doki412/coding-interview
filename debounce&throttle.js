@@ -13,7 +13,7 @@ const debounce = (func, delay) => {
 //throttle
 const throttle = (func, delay) => {
   let t1 = 0  //初始时间
-  return function() {
+  return function () {
     const t2 = Number(new Date()) //当前时间
     if (t2 - t1 > delay) {
       func.apply(this, arguments)
